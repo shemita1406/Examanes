@@ -1,5 +1,5 @@
 var productos = new Array();
-var totalillo=0  ;
+var totalillo = 0 ;
 var caca = 0;
 var checked = 0;
 let contador1 = 0;
@@ -12,6 +12,7 @@ let Result2 = 0;
 let Result3 = 0;
 let Result4 = 0;
 let Result5 = 0;
+//var miCanvas = document.getElementById("MiGrafica").getContext("2d");
       
     /*if (document.getElementById('cosako'.checked))
     {
@@ -88,9 +89,16 @@ function validaCheckbox(){
             Result5 = contador5 * 55;
         }
     }
+        
     alert("El total de los productos es: " + caca);
-    var ctx = document.getElementById("mychart").getContext("2d");
-    var mychart = new Chart(ctx,{
+}
+function graficacion(){
+    var miCanvas = document.getElementById("MiGrafica").getContext("2d");
+    if(mychart){
+        mychart.clear();
+        mychart.destroy();
+    }
+    var mychart = new Chart(miCanvas,{
         type: "bar",
         data: {
             labels: ['Kosaco' , 'Skyy','Kraken','Azul','kawuama'],
@@ -99,10 +107,10 @@ function validaCheckbox(){
                 data:[Result1,Result2,Result3,Result4,Result5],
                 backgroundColor: [
                     "rgb(23, 255, 119)",
-                    'rgb(77, 77, 255)',
-                    'rgb(255, 51, 204)',
-                    'rgb(153, 255, 102)',
-                    'rgb(102, 255, 255)'
+                    "rgb(77, 77, 255)",
+                    "rgb(255, 51, 204)",
+                    "rgb(153, 255, 102)",
+                    "rgb(102, 255, 255)"
                 ]
             }]
         },
@@ -110,13 +118,22 @@ function validaCheckbox(){
             scales:{
                 yAxes:[{
                     ticks:{
-                        beginAtZero:true 
+                        beginAtZero:true,
+                        responsive: true,
+                        maintainAspectRatio: false,
                         }
                 }]
             }
+            
         }
     });
+    
 }
+    
+
+    
+
+    
     
 
     
